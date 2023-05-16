@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parking</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Vehicle entry system for a parking lot</h1>
+        </div>
+        <div class="main">
+            <form id="form">
+                <h2>Register entry</h2>
+                <div class="form-group">
+                    <label for="brand">Brand</label>
+                    <input type="text" id="brand" />
+                </div>
+                <div class="form-group">
+                    <label for="model">Model</label>
+                    <input type="text" id="model" />
+                </div>
+                <div class="form-group">
+                    <label for="color">Color</label>
+                    <input type="text" id="color" />
+                </div>
+                <div class="form-group">
+                    <label for="license-plate">License plate</label>
+                    <input type="text" id="license-plate" />
+                </div>
+                <div class="form-group">
+                    <label for="place">Place</label>
+                    <select id="place">
+                    </select>
+                </div>
+                <button type="submit">Register entry</button>
+            </form>
+
+            <form id="form-exit">
+                <h2>Register exit</h2>
+                <div class="form-group">
+                    <label for="license-plate-exit">License plate</label>
+                    <input type="text" id="license-plate-exit" />
+                </div>
+                <div class="form-group">
+                    <label for="place-exit">Place</label>
+                    <input type="text" id="place-exit" readonly />
+                </div>
+                <button type="submit">Register exit</button>
+            </form>
+
+            <div id="parking"></div>
+        </div>
+        <div class="footer">
+            <p>Hecho en Cuba chama</p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  background: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+.main {
+  background: #f0f0f0;
+  padding: 20px;
+}
+
+.footer {
+  background: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+form {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #333;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  width: 100px;
+  margin-right: 10px;
+}
+
+.form-group input[type="text"] {
+  width: 200px;
+  padding: 5px;
+  border: 1px solid #333;
+}
+
+.form-group select {
+  width: 200px;
+  padding: 5px;
+  border: 1px solid #333;
+}
+
+form button {
+  width: 200px;
+  padding: 10px;
+  border: none;
+  background: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+#parking {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.floor {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.place {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+.place span {
+  font-size: 12px;
+}
