@@ -1,4 +1,4 @@
-const form = document.getElementById('form')
+const formEntry = document.getElementById('form-entry')
 const brand = document.getElementById('brand')
 const model = document.getElementById('model')
 const color = document.getElementById('color')
@@ -12,7 +12,19 @@ const placeExit = document.getElementById('place-exit')
 
 const select = document.getElementById('place')
 
+const buttonRegister = document.querySelector('.button-register')
+const buttonDelete = document.querySelector('.button-delete')
+
+const buttonCloseFormEntry = document.getElementById('button-close-form-entry')
+const buttonCloseFormExit = document.getElementById('button-close-form-exit')
+
+const overlay = document.querySelector('.overlay')
+
 const fragment = document.createDocumentFragment()
+
+const date = document.getElementById('date')
+
+date.innerHTML = new Date().toLocaleDateString('en-EN', { year: 'numeric', month: 'long', day: 'numeric' })
 
 for (let floor = 1; floor <= 5; floor++) {
   for (let place = 1; place <= 10; place++) {
@@ -120,7 +132,7 @@ function freePlace (licensePlate) {
   }
 }
 
-form.addEventListener('submit', function (event) {
+formEntry.addEventListener('submit', function (event) {
   event.preventDefault()
 
   const brandValue = brand.value
@@ -154,4 +166,34 @@ formExit.addEventListener('submit', function (event) {
   freePlace(licensePlateExitValue)
   placeExit.value = vehicle.place
   showParking()
+})
+
+buttonRegister.addEventListener('click', function () {
+  overlay.classList.toggle('hidden')
+  overlay.classList.add('flex')
+  formEntry.classList.toggle('hidden')
+  formEntry.classList.add('block')
+})
+
+buttonDelete.addEventListener('click', function () {
+  overlay.classList.toggle('hidden')
+  overlay.classList.add('flex')
+  formExit.classList.toggle('hidden')
+  formExit.classList.add('block')
+})
+
+buttonCloseFormEntry.addEventListener('click', function () {
+  overlay.classList.add('hidden')
+  overlay.classList.toggle('flex')
+
+  formEntry.classList.add('hidden')
+  formEntry.classList.toggle('block')
+})
+
+buttonCloseFormExit.addEventListener('click', function () {
+  overlay.classList.add('hidden')
+  overlay.classList.toggle('flex')
+
+  formExit.classList.add('hidden')
+  formExit.classList.toggle('block')
 })
