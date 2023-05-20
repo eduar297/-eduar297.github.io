@@ -112,10 +112,24 @@ form button {
   justify-content: center;
   background: #fff;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  flex-direction: column;
 }
 
-.place span {
+.place-vehicle {
+  transition: all 0.4s;
   font-size: 12px;
+}
+
+.place-vehicle:hover {
+  transform: scale(2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+}
+
+.place-vehicle p,
+hr {
+  display: none;
 }
 
 .button {

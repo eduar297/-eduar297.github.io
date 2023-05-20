@@ -24,7 +24,11 @@ const fragment = document.createDocumentFragment()
 
 const date = document.getElementById('date')
 
-date.innerHTML = new Date().toLocaleDateString('en-EN', { year: 'numeric', month: 'long', day: 'numeric' })
+date.innerHTML = new Date().toLocaleDateString('en-EN', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+})
 
 for (let floor = 1; floor <= 5; floor++) {
   for (let place = 1; place <= 10; place++) {
@@ -74,11 +78,50 @@ function showParking () {
       divPlace.id = idPlace
       const vehicle = retrieveVehicleByPlace(idPlace)
       if (vehicle) {
+        divPlace.classList.add('place-vehicle')
         divPlace.style.backgroundColor = vehicle.color
         const spanLicensePlate = document.createElement('span')
         spanLicensePlate.textContent = vehicle.licensePlate
+        const pBrand = document.createElement('p')
+        pBrand.textContent = `brand: ${vehicle.brand}`
+        const pModel = document.createElement('p')
+        pModel.textContent = `model: ${vehicle.model}`
+
+        const hr = document.createElement('hr')
+        hr.style.width = '75%'
+        hr.style.border = '1px solid #333'
+        hr.style.align = 'center'
+        hr.style.margin = '4px'
+
         divPlace.appendChild(spanLicensePlate)
+
+        divPlace.appendChild(hr)
+        divPlace.appendChild(pBrand)
+        divPlace.appendChild(pModel)
+
+        divPlace.onmouseover = function () {
+          const ps = divPlace.querySelectorAll('p')
+          for (const p of ps) {
+            p.style.display = 'inline'
+          }
+          const hrs = divPlace.querySelectorAll('hr')
+          for (const hr of hrs) {
+            hr.style.display = 'inline'
+          }
+        }
+
+        divPlace.onmouseout = function () {
+          const ps = divPlace.querySelectorAll('p')
+          for (const p of ps) {
+            p.style.display = 'none'
+          }
+          const hrs = divPlace.querySelectorAll('hr')
+          for (const hr of hrs) {
+            hr.style.display = 'none'
+          }
+        }
       }
+
       divFloor.appendChild(divPlace)
     }
     parking.appendChild(divFloor)
@@ -96,14 +139,12 @@ function assignPlace (vehicle) {
     saveVehicle(vehicle)
     console.log(
       'The place ' +
- idPlace +
- ' has been correctly assigned to the vehicle with license plate ' +
- vehicle.licensePlate
+        idPlace +
+        ' has been correctly assigned to the vehicle with license plate ' +
+        vehicle.licensePlate
     )
   } else {
-    console.error(
-      'No place was found with the identifier ' + idPlace
-    )
+    console.error('No place was found with the identifier ' + idPlace)
   }
 }
 
@@ -119,10 +160,10 @@ function freePlace (licensePlate) {
       window.localStorage.removeItem(licensePlate)
       console.log(
         'The place ' +
- idPlace +
- ' occupied by the vehicle with license plate ' +
- licensePlate +
- ' has been correctly freed'
+          idPlace +
+          ' occupied by the vehicle with license plate ' +
+          licensePlate +
+          ' has been correctly freed'
       )
     } else {
       console.error('No place was found with that identifier')
@@ -142,7 +183,13 @@ formEntry.addEventListener('submit', function (event) {
   const licensePlateValue = licensePlate.value
   const placeValue = place.value
 
-  if (brandValue && modelValue && colorValue && licensePlateValue && placeValue) {
+  if (
+    brandValue &&
+    modelValue &&
+    colorValue &&
+    licensePlateValue &&
+    placeValue
+  ) {
     const vehicle = {
       brand: brandValue,
       model: modelValue,
